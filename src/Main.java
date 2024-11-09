@@ -5,12 +5,11 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int size;
-        int fila = 0;
-        int columna = 0;
-        int i = 0;
-        int j = 0;
+        int fila;
+        int columna;
+        int i;
+        int j;
         char patron;
-        boolean esNegro;
 
         // Solicitamos el caracter para el patrón.
 
