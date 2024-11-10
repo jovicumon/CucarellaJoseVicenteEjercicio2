@@ -10,10 +10,11 @@ public class Main {
         int i;
         int j;
         char patron;
+        String pintar;
 
         // Solicitamos el caracter para el patrón.
 
-        System.out.println("Introduce el caácter para el patrón; ");
+        System.out.println("Introduce el carácter para el patrón; ");
         patron = scanner.next().charAt(0);
         scanner.nextLine();                         // Limpieza buffer.
 
@@ -41,20 +42,14 @@ public class Main {
                 for (i = 0; i < size; i++) {
                     System.out.print("|");                          // Borde izquierdo.
                     for (columna = 0; columna < 8; columna++) {     // El tablero tiene un máximo de 8 columnas.
-
-                       switch ((fila + columna) % 2){               // Determinamos color de la casilla.
-                           case 0:                                  // Casilla blanca.
-                               for (j =0; j < size; j++){
-                                   System.out.print(" ");
-                               }
-                               break;
-                           case 1:                                  // Casilla negra con patrón.
-                               for (j =0; j < size; j++){
-                                   System.out.print(patron);
-                               }
-                               break;
+                       pintar = " ";
+                       if ((fila + columna) % 2 !=0){               // Determinamos color de la casilla.
+                           pintar = String.valueOf(patron);         // Pinta la casilla negra
                        }
-                        System.out.print("|");                      // Borde derecho.
+                        for (j =0; j < size; j++){
+                            System.out.print(pintar);              // Pintar la casilla blanca.
+                        }
+                        System.out.print("|");                     // Borde derecho.
                     }
                     System.out.println();
                 }
