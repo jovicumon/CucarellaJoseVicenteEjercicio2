@@ -2,6 +2,7 @@
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int size;
@@ -9,8 +10,12 @@ public class Main {
         int columna;
         int i;
         int j;
+        int tamanoTablero = 8;
         char patron;
         String pintar;
+        String textoBlanco = " ";
+        String barra = "|";
+        String guion = "-";
 
         // Solicitamos el caracter para el patrón.
 
@@ -34,27 +39,27 @@ public class Main {
 
             //Generamos el tablero
 
-        for (j =0; j < (size + 1) * 8 + 1; j++){                    // Primera fila de guiones para nuestro tablero.
-            System.out.print("-");
+        for (j =0; j < (size + 1) * tamanoTablero + 1; j++){                    // Primera fila de guiones para nuestro tablero.
+            System.out.print(guion);
         }
         System.out.println();
-            for (fila = 0; fila < 8; fila++) {                      // El tablero tiene un máximo de 8 filas.
+            for (fila = 0; fila < tamanoTablero; fila++) {                      // El tablero tiene un máximo de 8 filas.
                 for (i = 0; i < size; i++) {
-                    System.out.print("|");                          // Borde izquierdo.
-                    for (columna = 0; columna < 8; columna++) {     // El tablero tiene un máximo de 8 columnas.
-                       pintar = " ";
+                    System.out.print(barra);                          // Borde izquierdo.
+                    for (columna = 0; columna < tamanoTablero; columna++) {     // El tablero tiene un máximo de 8 columnas.
+                       pintar = textoBlanco;
                        if ((fila + columna) % 2 !=0){               // Determinamos color de la casilla.
                            pintar = String.valueOf(patron);         // Pinta la casilla negra
                        }
                         for (j =0; j < size; j++){
                             System.out.print(pintar);              // Pintar la casilla blanca.
                         }
-                        System.out.print("|");                     // Borde derecho.
+                        System.out.print(barra);                     // Borde derecho.
                     }
                     System.out.println();
                 }
-                for(j =0; j < (size+1) * 8 + 1; j++){              // Bucle para separación de filas con -.
-                    System.out.print("-");
+                for(j =0; j < (size+1) * tamanoTablero + 1; j++){              // Bucle para separación de filas con -.
+                    System.out.print(guion);
                 }
                 System.out.println();
             }
