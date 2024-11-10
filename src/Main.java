@@ -5,7 +5,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int size;
+        int size = 0;
         int fila;
         int columna;
         int i;
@@ -16,6 +16,7 @@ public class Main {
         String textoBlanco = " ";
         String barra = "|";
         String guion = "-";
+        boolean datosCorrectos = false;
 
         // Solicitamos el caracter para el patrón.
 
@@ -25,18 +26,20 @@ public class Main {
 
         // Solicitamos tamaño para las casillas.
 
-        do {
+        while(!datosCorrectos){
             System.out.println("Introduce el tamaño de la casilla (entre: 1-15): ");
-            while (!scanner.hasNextInt()) {         // Verificamos que el tamaño es un número.
+            if(!scanner.hasNextInt()){              // Verificamos que el tamaño es un número.
                 System.out.println("Dato erróneo, introduce un número entero.");
-                scanner.next();                     // Limpieza buffer.
+                scanner.next();
+            }else{
+                size = scanner.nextInt();
+                if (size < 1 || size > 15) {
+                    System.out.println("Introduce un valor entre 1 y 15.");
+                }else{
+                    datosCorrectos = true;
+                }
             }
-            size = scanner.nextInt();
-            if (size < 1 || size > 15) {
-                System.out.println("Introduce un valor entre 1 y 15.");
-            }
-        }while (size < 1 || size > 15) ;
-
+        }
             //Generamos el tablero
 
         for (j =0; j < (size + 1) * tamanoTablero + 1; j++){                    // Primera fila de guiones para nuestro tablero.
@@ -45,16 +48,16 @@ public class Main {
         System.out.println();
             for (fila = 0; fila < tamanoTablero; fila++) {                      // El tablero tiene un máximo de 8 filas.
                 for (i = 0; i < size; i++) {
-                    System.out.print(barra);                          // Borde izquierdo.
+                    System.out.print(barra);                                    // Borde izquierdo.
                     for (columna = 0; columna < tamanoTablero; columna++) {     // El tablero tiene un máximo de 8 columnas.
                        pintar = textoBlanco;
-                       if ((fila + columna) % 2 !=0){               // Determinamos color de la casilla.
-                           pintar = String.valueOf(patron);         // Pinta la casilla negra
+                       if ((fila + columna) % 2 !=0){                           // Determinamos color de la casilla.
+                           pintar = String.valueOf(patron);                     // Pinta la casilla negra
                        }
                         for (j =0; j < size; j++){
-                            System.out.print(pintar);              // Pintar la casilla blanca.
+                            System.out.print(pintar);                           // Pintar la casilla blanca.
                         }
-                        System.out.print(barra);                     // Borde derecho.
+                        System.out.print(barra);                                // Borde derecho.
                     }
                     System.out.println();
                 }
