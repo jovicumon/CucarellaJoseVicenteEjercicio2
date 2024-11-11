@@ -20,7 +20,7 @@ public class CucarellaJoseVicenteEjercicio2 {
 
         // Solicitamos el caracter para el patrón.
 
-        System.out.println("Introduce el carácter para el patrón; ");
+        System.out.println("Introduce el carácter, número o símbolo para el patrón; ");
         patron = scanner.next().charAt(0);
         scanner.nextLine();                         // Limpieza buffer.
 
